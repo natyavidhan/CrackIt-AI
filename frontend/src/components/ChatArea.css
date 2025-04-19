@@ -199,15 +199,23 @@
     list-style: none; /* list-none */
     padding: 0;
     margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack boxes vertically */
+    gap: 0.5rem; /* Add space between boxes */
 }
 
 .context-item {
-    padding: 0.25rem 0; /* py-1 */
-    border-bottom: 1px dashed #4b5563; /* border-b border-dashed border-gray-600 */
+    padding: 0;
+    border-bottom: none;
 }
 
-.context-item:last-child {
-    border-bottom: none; /* Remove border from last item */
+/* New style for individual context question boxes */
+.context-question-box {
+    background-color: #1f2937; /* bg-gray-800 (darker than context-questions bg) */
+    padding: 0.5rem 0.75rem; /* p-2 px-3 */
+    border-radius: 0.25rem; /* rounded-sm */
+    border: 1px solid #374151; /* border-gray-700 */
+    cursor: pointer;
 }
 
 /* KaTeX specific adjustments if needed */

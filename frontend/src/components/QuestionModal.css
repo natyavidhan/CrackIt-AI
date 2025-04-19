@@ -1,0 +1,91 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's on top */
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #e5e7eb; /* text-gray-200 */
+  padding: 2rem;
+  border-radius: 0.5rem; /* rounded-lg */
+  max-width: 90%;
+  max-height: 90vh; /* Limit height */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  position: relative;
+  width: 60rem; /* Adjust width as needed, e.g., max-w-3xl or more */
+  border: 1px solid #4b5563; /* border-gray-600 */
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #9ca3af; /* text-gray-400 */
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.modal-close-button:hover {
+  color: #e5e7eb; /* text-gray-200 */
+}
+
+.modal-section {
+  margin-bottom: 1.5rem;
+}
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section h4 {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600; /* font-semibold */
+  color: #9ca3af; /* text-gray-400 */
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #374151; /* border-gray-700 */
+  padding-bottom: 0.25rem;
+}
+
+.modal-question,
+.modal-explanation,
+.modal-integer-answer {
+  line-height: 1.6; /* Improve readability */
+}
+
+.modal-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-options-list li {
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed #374151; /* Lighter separator */
+}
+.modal-options-list li:last-child {
+  border-bottom: none;
+}
+
+.modal-options-list .correct-option {
+  font-weight: bold;
+  color: #34d399; /* text-green-400 */
+}
+
+/* Ensure KaTeX renders correctly within the modal */
+.modal-content .katex {
+  font-size: 1em; /* Adjust if needed */
+  color: inherit; /* Inherit text color */
+}
