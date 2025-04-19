@@ -81,7 +81,7 @@ const Sidebar = ({ chats, currentChatId, setCurrentChatId, createNewChat, delete
       </div>
 
       <div className="sidebar-footer"> 
-        © 2025 Chat App
+        CrackIt AI
       </div>
     </div>
   );

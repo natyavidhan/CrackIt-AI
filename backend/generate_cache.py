@@ -4,10 +4,8 @@ from sentence_transformers import SentenceTransformer
 from pymongo import MongoClient
 from bs4 import BeautifulSoup
 
-# Load SentenceTransformer model
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# MongoDB config (replace with your own MongoDB URI and database/collection names)
 client = MongoClient("mongodb://localhost:27017")
 db = client["pyqs"]
 collection = db["questions"]
@@ -15,22 +13,16 @@ collection = db["questions"]
 import re
 
 def clean_html(text):
-    """Remove HTML tags from the text."""
     return BeautifulSoup(text, "html.parser").get_text()
 
 def clean_latex(text):
-    """Remove LaTeX math expressions (i.e., inline expressions surrounded by $...$)."""
-    # This removes inline LaTeX math expressions like $y=\frac{1}{2}$.
     return re.sub(r'\$[^\$]*\$', '', text)
 
 def preprocess_text(text):
-    """Clean both HTML tags and LaTeX math expressions."""
     text = clean_html(text)
     text = clean_latex(text)
     return text
 
-
-# Function to retrieve questions from MongoDB and generate embeddings
 def generate_embeddings():
     i = 1
     questions = []
@@ -45,12 +37,11 @@ def generate_embeddings():
                     "question": question,
                     "exam": doc.get("exam", ""),
                     "subject": doc.get("subject", ""),
-                    "embedding": embedding.tolist()  # Convert numpy array to list for pickle
+                    "embedding": embedding.tolist()
                 })
                 i += 1
     return questions
 
-# Generate embeddings and save to cache file
 def save_embeddings():
     qa_list = generate_embeddings()
     with open("qa_cache.pkl", "wb") as f:

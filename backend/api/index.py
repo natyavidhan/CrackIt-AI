@@ -4,7 +4,7 @@ import numpy as np
 from functools import lru_cache
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List
+from typing import List, Dict, Any
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from pymongo import MongoClient
@@ -19,10 +19,8 @@ model_gemini = genai.GenerativeModel("gemini-2.0-flash")
 
 app = FastAPI()
 
-# Load model once
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# MongoDB config (use env or static for testing)
 client = MongoClient(os.getenv("MONGODB_URI", "mongodb://localhost:27017"))
 collection = client["pyqs"]["questions"]
 
@@ -36,7 +34,7 @@ class RAGRequest(BaseModel):
 
 class RAGResponse(BaseModel):
     answer: str
-    context_used: List[str]
+    context_used: List[Dict[str, Any]]
 
 @lru_cache(maxsize=1)
 def load_cache_once():
@@ -61,7 +59,7 @@ def generate_answer_with_gemini(context_docs, user_query):
         for doc in context_docs
     )
 
-    prompt = f"""You are a helpful AI assistant for JEE exam preparation.
+    prompt = f"""You are a helpful AI assistant for Engineering/Medical Entrance exam preparation.
 Use the following context to answer the question clearly and accurately.
 
 Context:
@@ -79,6 +77,19 @@ Answer:"""
 def ask_api(req: RAGRequest):
     docs = search_documents(req.query, req.exam_id, req.subject_id, req.top_k)
     if not docs:
-        return {"answer": "No relevant documents found.", "context_used": []}
-    answer = generate_answer_with_gemini(docs, req.query)
-    return {"answer": answer, "context_used": [doc["question"] for doc in docs]}
+        return RAGResponse(answer="No relevant documents found.", context_used=[])
+
+    serializable_docs = []
+    for doc in docs:
+        if doc and '_id' in doc:
+            doc['_id'] = str(doc['_id'])
+        doc.setdefault('question', 'N/A')
+        doc.setdefault('options', [])
+        doc.setdefault('correct_option', [])
+        doc.setdefault('correct_value', None)
+        doc.setdefault('explanation', 'N/A')
+        doc.setdefault('type', 'unknown')
+        serializable_docs.append(doc)
+
+    answer = generate_answer_with_gemini(serializable_docs, req.query)
+    return RAGResponse(answer=answer, context_used=serializable_docs)
