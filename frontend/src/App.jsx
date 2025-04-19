@@ -1,5 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios'; // Import axios
 import './App.css'; // Import App.css
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
@@ -111,19 +112,18 @@ function App() {
     );
   };
 
-  const sendMessage = async (message, examId, subjectId) => { // Parameters are now IDs
+  const sendMessage = async (message, examId, subjectId) => {
     let chatId = currentChatId;
 
-    // If no current chat, create a new one using the selected exam/subject
     if (!chatId) {
        console.warn("No active chat selected. Please select or create a chat.");
-       setLoading(false);
+       alert("Please select or create a chat first.");
        return;
     }
 
-    // Add user message
     const userMessage = { role: 'user', content: message, timestamp: new Date().toISOString() };
 
+    // Add user message optimistically
     setChats(prevChats =>
       prevChats.map(chat =>
         chat.id === chatId
@@ -134,21 +134,23 @@ function App() {
 
     setLoading(true);
 
-    // Find the current chat details
-    const currentChatDetails = chats.find(chat => chat.id === chatId);
-    // Use the IDs passed from InputArea for the simulated response
-    const currentExamId = examId; // Directly use the passed ID
-    const currentSubjectId = subjectId; // Directly use the passed ID
+    try {
+      // Make API call to backend
+      const response = await axios.post('/api/ask', { // Use relative path with proxy
+        query: message,
+        exam_id: examId,
+        subject_id: subjectId,
+        top_k: 3 // Or make this configurable if needed
+      });
 
-    // Simulate AI response (replace with real API call using currentExamId, currentSubjectId)
-    setTimeout(() => {
       const aiResponse = {
         role: 'assistant',
-        // Using IDs in the simulated response string. Adjust if needed.
-        content: `Simulated response for Exam ID: ${currentExamId} / Subject ID: ${currentSubjectId}: "${message}"`,
+        content: response.data.answer,
+        context_used: response.data.context_used, // Store context
         timestamp: new Date().toISOString()
       };
 
+      // Add AI response
       setChats(prevChats =>
         prevChats.map(chat =>
           chat.id === chatId
@@ -157,8 +159,25 @@ function App() {
         )
       );
 
+    } catch (error) {
+      console.error("Error fetching AI response:", error);
+      // Add an error message to the chat
+      const errorMessage = {
+        role: 'assistant',
+        content: `Sorry, I encountered an error. ${error.response?.data?.detail || error.message || ''}`,
+        timestamp: new Date().toISOString(),
+        isError: true // Add a flag for styling if needed
+      };
+      setChats(prevChats =>
+        prevChats.map(chat =>
+          chat.id === chatId
+            ? { ...chat, messages: [...chat.messages, errorMessage] }
+            : chat
+        )
+      );
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -180,7 +199,7 @@ function App() {
         
         <InputArea 
           sendMessage={sendMessage}
-          disabled={loading}
+          disabled={loading || !currentChatId} // Also disable if no chat is selected
         />
       </div>
     </div>

@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from "react";
+import Latex from 'react-latex-next'; // Import Latex
+import 'katex/dist/katex.min.css'; // Ensure KaTeX CSS is imported (redundant if in index.html, but safe)
 import './ChatArea.css'; // Import ChatArea.css
 
 const ChatArea = ({ currentChat, loading }) => {
@@ -39,16 +41,29 @@ const ChatArea = ({ currentChat, loading }) => {
                 {currentChat.messages.map((message, index) => (
                 <div
                     key={index}
-                    className={`message-row ${message.role}`} // Replaced Tailwind
+                    className={`message-block ${message.role}`} // Use a block container
                 >
                     <div
-                    className={`message-bubble ${message.role}`} // Replaced Tailwind
+                        className={`message-bubble ${message.role} ${message.isError ? 'error' : ''}`} // Add error class if needed
                     >
-                    {message.content}
-                    <div className="message-timestamp"> 
-                        {new Date(message.timestamp).toLocaleTimeString()}
+                        <Latex>{message.content || ''}</Latex> {/* Render content with Latex */}
+                        <div className="message-timestamp"> 
+                            {new Date(message.timestamp).toLocaleTimeString()}
+                        </div>
                     </div>
-                    </div>
+                    {/* Display Context Questions for Assistant messages */}
+                    {message.role === 'assistant' && message.context_used && message.context_used.length > 0 && (
+                        <div className="context-questions">
+                            <h4 className="context-title">Context Used:</h4>
+                            <ul className="context-list">
+                                {message.context_used.map((context, ctxIndex) => (
+                                    <li key={ctxIndex} className="context-item">
+                                        <Latex>{context || ''}</Latex> {/* Render context with Latex */}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
                 ))}
 
