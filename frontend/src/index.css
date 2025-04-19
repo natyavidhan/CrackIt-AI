@@ -4,11 +4,11 @@
   padding: 0;
 }
 
-html, body, #root { /* Ensure root takes full height */
+html, body, #root { 
   height: 100%;
 }
 
-body { /* Add base font styles */
-  font-family: sans-serif; /* Or your preferred font */
+body { 
+  font-family: sans-serif; 
   line-height: 1.5;
 }

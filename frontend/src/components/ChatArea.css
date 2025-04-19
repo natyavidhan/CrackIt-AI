@@ -1,19 +1,19 @@
 .chat-area-container {
-  flex: 1; /* flex-1 */
-  overflow-y: auto; /* overflow-y-auto */
-  background-color: #111827; /* bg-gray-900 */
+  flex: 1; 
+  overflow-y: auto; 
+  background-color: #111827; 
 }
 
 .chat-area-welcome,
 .chat-area-content {
-  max-width: 48rem; /* max-w-3xl */
+  max-width: 48rem; 
   margin-left: auto;
   margin-right: auto;
-  padding: 1.5rem; /* p-6 */
+  padding: 1.5rem; 
 }
 
 .chat-area-welcome {
-    height: 100%; /* Make welcome message container take full height */
+    height: 100%; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,48 +21,48 @@
 
 .welcome-message {
   text-align: center;
-  color: #9ca3af; /* text-gray-400 */
+  color: #9ca3af; 
 }
 
 .welcome-message h3 {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 500; /* font-medium */
-  margin-bottom: 0.5rem; /* mb-2 */
+  font-size: 1.25rem; 
+  font-weight: 500; 
+  margin-bottom: 0.5rem; 
 }
 
 .chat-header {
-  /* position: sticky; Removed sticky as it complicates things without more structure */
-  /* top: 0; */
-  margin-bottom: 1rem; /* mb-4 */
-  padding-top: 0.5rem; /* py-2 */
-  padding-bottom: 0.5rem; /* py-2 */
-  background-color: #111827; /* bg-gray-900 */
-  /* z-index: 10; */
+  
+  
+  margin-bottom: 1rem; 
+  padding-top: 0.5rem; 
+  padding-bottom: 0.5rem; 
+  background-color: #111827; 
+  
 }
 
 .chat-title {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 500; /* font-medium */
+  font-size: 1.25rem; 
+  font-weight: 500; 
   text-align: center;
 }
 
 .empty-chat-message {
   text-align: center;
-  color: #9ca3af; /* text-gray-400 */
-  margin-top: 2.5rem; /* mt-10 */
+  color: #9ca3af; 
+  margin-top: 2.5rem; 
 }
 
-.messages-list > div { /* Add margin between message blocks */
-    margin-bottom: 1rem; /* mb-4 equivalent */
+.messages-list > div { 
+    margin-bottom: 1rem; 
 }
-.messages-list > div:last-child { /* Remove margin from last child */
+.messages-list > div:last-child { 
     margin-bottom: 0;
 }
 
-.messages-list > .message-block { /* Target the new block container */
-    margin-bottom: 1rem; /* mb-4 equivalent */
+.messages-list > .message-block { 
+    margin-bottom: 1rem; 
 }
-.messages-list > .message-block:last-child { /* Remove margin from last child */
+.messages-list > .message-block:last-child { 
     margin-bottom: 0;
 }
 
@@ -71,88 +71,88 @@
 }
 
 .message-row.user {
-  justify-content: flex-end; /* justify-end */
+  justify-content: flex-end; 
 }
 
 .message-row.assistant {
-  justify-content: flex-start; /* justify-start */
+  justify-content: flex-start; 
 }
 
 .message-block {
     display: flex;
-    flex-direction: column; /* Stack bubble and context */
+    flex-direction: column; 
 }
 
 .message-block.user {
-    align-items: flex-end; /* Align user content right */
+    align-items: flex-end; 
 }
 
 .message-block.assistant {
-    align-items: flex-start; /* Align assistant content left */
+    align-items: flex-start; 
 }
 
 .message-bubble {
-  max-width: 75%; /* max-w-md roughly */
-  padding: 1rem; /* p-4 */
-  border-radius: 0.5rem; /* rounded-lg */
+  max-width: 75%; 
+  padding: 1rem; 
+  border-radius: 0.5rem; 
 }
 
 .message-bubble.user {
-  background-color: #2563eb; /* bg-blue-600 */
-  color: white; /* text-white */
+  background-color: #2563eb; 
+  color: white; 
 }
 
 .message-bubble.assistant {
-  background-color: #1f2937; /* bg-gray-800 */
-  color: #e5e7eb; /* text-gray-200 */
+  background-color: #1f2937; 
+  color: #e5e7eb; 
 }
 
 .message-bubble.error {
-    background-color: #7f1d1d; /* bg-red-900 */
-    color: #fecaca; /* text-red-200 */
-    border: 1px solid #ef4444; /* border-red-500 */
+    background-color: #7f1d1d; 
+    color: #fecaca; 
+    border: 1px solid #ef4444; 
 }
 
 .message-timestamp {
-  font-size: 0.75rem; /* text-xs */
-  opacity: 0.7; /* opacity-70 */
-  margin-top: 0.25rem; /* mt-1 */
+  font-size: 0.75rem; 
+  opacity: 0.7; 
+  margin-top: 0.25rem; 
 }
 
-/* Loading Indicator */
+
 .loading-indicator {
   display: flex;
-  justify-content: flex-start; /* justify-start */
-  margin-bottom: 1rem; /* mb-4 */
+  justify-content: flex-start; 
+  margin-bottom: 1rem; 
 }
 
 .loading-bubble {
   max-width: 75%;
-  padding: 1rem; /* p-4 */
-  border-radius: 0.5rem; /* rounded-lg */
-  background-color: #1f2937; /* bg-gray-800 */
-  color: #e5e7eb; /* text-gray-200 */
+  padding: 1rem; 
+  border-radius: 0.5rem; 
+  background-color: #1f2937; 
+  color: #e5e7eb; 
 }
 
 .loading-dots {
   display: flex;
-  gap: 0.5rem; /* space-x-2 */
+  gap: 0.5rem; 
 }
 
 .loading-dot {
-  width: 0.5rem; /* w-2 */
-  height: 0.5rem; /* h-2 */
-  border-radius: 9999px; /* rounded-full */
-  background-color: #9ca3af; /* bg-gray-400 */
+  width: 0.5rem; 
+  height: 0.5rem; 
+  border-radius: 9999px; 
+  background-color: #9ca3af; 
   animation: bounce 1s infinite;
 }
 
 .loading-dot:nth-child(2) {
-  animation-delay: 0.1s; /* delay-100 */
+  animation-delay: 0.1s; 
 }
 
 .loading-dot:nth-child(3) {
-  animation-delay: 0.2s; /* delay-200 */
+  animation-delay: 0.2s; 
 }
 
 @keyframes bounce {
@@ -166,42 +166,42 @@
   }
 }
 
-/* Context Questions Styling */
+
 .context-questions {
-    max-width: 75%; /* Match bubble width */
-    margin-top: 0.5rem; /* mt-2 */
-    padding: 0.75rem; /* p-3 */
-    border-radius: 0.375rem; /* rounded-md */
-    background-color: #374151; /* bg-gray-700 */
-    border: 1px solid #4b5563; /* border-gray-600 */
-    font-size: 0.8rem; /* Slightly smaller text */
-    color: #d1d5db; /* text-gray-300 */
+    max-width: 75%; 
+    margin-top: 0.5rem; 
+    padding: 0.75rem; 
+    border-radius: 0.375rem; 
+    background-color: #374151; 
+    border: 1px solid #4b5563; 
+    font-size: 0.8rem; 
+    color: #d1d5db; 
 }
 
 .message-block.user .context-questions {
-    /* Should not appear for users, but just in case */
+    
     align-self: flex-end;
 }
 
 .message-block.assistant .context-questions {
-    align-self: flex-start; /* Align with assistant bubble */
+    align-self: flex-start; 
 }
 
 .context-title {
-    font-weight: 500; /* font-medium */
-    margin-bottom: 0.5rem; /* mb-2 */
-    color: #9ca3af; /* text-gray-400 */
-    font-size: 0.75rem; /* text-xs */
+    font-weight: 500; 
+    margin-bottom: 0.5rem; 
+    color: #9ca3af; 
+    font-size: 0.75rem; 
     text-transform: uppercase;
 }
 
 .context-list {
-    list-style: none; /* list-none */
+    list-style: none; 
     padding: 0;
     margin: 0;
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack boxes vertically */
-    gap: 0.5rem; /* Add space between boxes */
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem; 
 }
 
 .context-item {
@@ -209,16 +209,16 @@
     border-bottom: none;
 }
 
-/* New style for individual context question boxes */
+
 .context-question-box {
-    background-color: #1f2937; /* bg-gray-800 (darker than context-questions bg) */
-    padding: 0.5rem 0.75rem; /* p-2 px-3 */
-    border-radius: 0.25rem; /* rounded-sm */
-    border: 1px solid #374151; /* border-gray-700 */
+    background-color: #1f2937; 
+    padding: 0.5rem 0.75rem; 
+    border-radius: 0.25rem; 
+    border: 1px solid #374151; 
     cursor: pointer;
 }
 
-/* KaTeX specific adjustments if needed */
+
 .katex {
-    font-size: 1em; /* Adjust base KaTeX size if necessary */
+    font-size: 1em; 
 }

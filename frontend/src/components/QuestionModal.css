@@ -4,25 +4,25 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure it's on top */
+  z-index: 1000;
   padding: 1rem;
 }
 
 .modal-content {
-  background-color: #1f2937; /* bg-gray-800 */
-  color: #e5e7eb; /* text-gray-200 */
+  background-color: #1f2937;
+  color: #e5e7eb;
   padding: 2rem;
-  border-radius: 0.5rem; /* rounded-lg */
+  border-radius: 0.5rem;
   max-width: 90%;
-  max-height: 90vh; /* Limit height */
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
-  width: 60rem; /* Adjust width as needed, e.g., max-w-3xl or more */
-  border: 1px solid #4b5563; /* border-gray-600 */
+  width: 60rem;
+  border: 1px solid #4b5563;
 }
 
 .modal-close-button {
@@ -33,13 +33,13 @@
   border: none;
   font-size: 1.8rem;
   line-height: 1;
-  color: #9ca3af; /* text-gray-400 */
+  color: #9ca3af;
   cursor: pointer;
   padding: 0.25rem;
 }
 
 .modal-close-button:hover {
-  color: #e5e7eb; /* text-gray-200 */
+  color: #e5e7eb;
 }
 
 .modal-section {
@@ -50,19 +50,19 @@
 }
 
 .modal-section h4 {
-  font-size: 0.875rem; /* text-sm */
-  font-weight: 600; /* font-semibold */
-  color: #9ca3af; /* text-gray-400 */
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #9ca3af;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
-  border-bottom: 1px solid #374151; /* border-gray-700 */
+  border-bottom: 1px solid #374151;
   padding-bottom: 0.25rem;
 }
 
 .modal-question,
 .modal-explanation,
 .modal-integer-answer {
-  line-height: 1.6; /* Improve readability */
+  line-height: 1.6;
 }
 
 .modal-options-list {
@@ -73,7 +73,7 @@
 
 .modal-options-list li {
   padding: 0.3rem 0;
-  border-bottom: 1px dashed #374151; /* Lighter separator */
+  border-bottom: 1px dashed #374151;
 }
 .modal-options-list li:last-child {
   border-bottom: none;
@@ -81,11 +81,10 @@
 
 .modal-options-list .correct-option {
   font-weight: bold;
-  color: #34d399; /* text-green-400 */
+  color: #34d399;
 }
 
-/* Ensure KaTeX renders correctly within the modal */
 .modal-content .katex {
-  font-size: 1em; /* Adjust if needed */
-  color: inherit; /* Inherit text color */
+  font-size: 1em;
+  color: inherit;
 }

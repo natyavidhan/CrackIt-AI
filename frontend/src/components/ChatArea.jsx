@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react"; // Import useState
+import React, { useEffect, useRef, useState } from "react"; 
 import Latex from 'react-latex-next';
 import 'katex/dist/katex.min.css';
 import './ChatArea.css';
-import QuestionModal from './QuestionModal'; // Import the modal component
+import QuestionModal from './QuestionModal'; 
 
 const ChatArea = ({ currentChat, loading }) => {
     const messagesEndRef = useRef(null);
@@ -39,7 +39,7 @@ const ChatArea = ({ currentChat, loading }) => {
     }
 
     return (
-        <> {/* Use Fragment to wrap ChatArea and Modal */}
+        <> 
             <div className="chat-area-container"> 
                 <div className="chat-area-content"> 
                     <div className="chat-header"> 
@@ -55,32 +55,32 @@ const ChatArea = ({ currentChat, loading }) => {
                         {currentChat.messages.map((message, index) => (
                         <div
                             key={index}
-                            className={`message-block ${message.role}`} // Use a block container
+                            className={`message-block ${message.role}`} 
                         >
                             <div
-                                className={`message-bubble ${message.role} ${message.isError ? 'error' : ''}`} // Add error class if needed
+                                className={`message-bubble ${message.role} ${message.isError ? 'error' : ''}`} 
                             >
-                                <Latex>{message.content || ''}</Latex> {/* Render content with Latex */}
+                                <Latex>{message.content || ''}</Latex> 
                                 <div className="message-timestamp"> 
                                     {new Date(message.timestamp).toLocaleTimeString()}
                                 </div>
                             </div>
-                            {/* Display Context Questions for Assistant messages */}
+                            
                             {message.role === 'assistant' && message.context_used && message.context_used.length > 0 && (
                                 <div className="context-questions">
                                     <h4 className="context-title">Context Used:</h4>
                                     <ul className="context-list">
                                         {message.context_used.map((contextDoc, ctxIndex) => (
                                             <li key={contextDoc._id || ctxIndex} className="context-item">
-                                                {/* Make the box clickable */}
+                                                
                                                 <div
                                                     className="context-question-box"
-                                                    onClick={() => handleContextClick(contextDoc)} // Add onClick handler
-                                                    role="button" // Add role for accessibility
-                                                    tabIndex={0} // Add tabIndex for accessibility
-                                                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleContextClick(contextDoc); }} // Keyboard accessibility
+                                                    onClick={() => handleContextClick(contextDoc)} 
+                                                    role="button" 
+                                                    tabIndex={0} 
+                                                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleContextClick(contextDoc); }} 
                                                 >
-                                                    {/* Display only the question text initially */}
+                                                    
                                                     <Latex>{contextDoc.question || 'Context item'}</Latex>
                                                 </div>
                                             </li>
@@ -108,7 +108,7 @@ const ChatArea = ({ currentChat, loading }) => {
                 </div>
             </div>
 
-            {/* Render Modal conditionally */}
+            
             {isModalOpen && selectedQuestion && (
                 <QuestionModal question={selectedQuestion} onClose={closeModal} />
             )}
