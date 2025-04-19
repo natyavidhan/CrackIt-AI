@@ -1,11 +1,14 @@
-@import "tailwindcss";
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html, body, #root { /* Ensure root takes full height */
   height: 100%;
+}
+
+body { /* Add base font styles */
+  font-family: sans-serif; /* Or your preferred font */
+  line-height: 1.5;
 }

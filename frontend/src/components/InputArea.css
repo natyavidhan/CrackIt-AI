@@ -1,0 +1,78 @@
+.input-area-container {
+  border-top: 1px solid #374151; /* border-t border-gray-700 */
+  background-color: #1f2937; /* bg-gray-800 */
+  padding: 1rem; /* p-4 */
+}
+
+.input-area-content {
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selectors-container {
+  margin-bottom: 1rem; /* mb-4 */
+  display: flex;
+  gap: 1rem; /* gap-4 */
+}
+
+.selector-group {
+  width: 50%; /* w-1/2 */
+}
+
+.selector-label {
+  display: block;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  margin-bottom: 0.25rem; /* mb-1 */
+}
+
+.selector-element {
+  width: 100%;
+  /* Inherits base styles from App.css */
+}
+
+.message-form {
+  display: flex;
+  align-items: flex-end; /* items-end */
+  gap: 0.5rem; /* gap-2 */
+}
+
+.textarea-container {
+  flex: 1; /* flex-1 */
+  position: relative; /* relative */
+}
+
+.message-textarea {
+  width: 100%;
+  /* Inherits base styles from App.css */
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem; /* py-3 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.send-button {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white; /* text-white */
+  font-weight: 500; /* font-medium */
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 0.75rem; /* p-3 */
+  transition: background-color 0.2s;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #1d4ed8; /* hover:bg-blue-700 */
+}
+
+.send-button:disabled {
+  background-color: #4b5563; /* disabled:bg-gray-600 */
+  opacity: 0.5; /* disabled:opacity-50 */
+}
+
+.send-button svg {
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem; /* w-5 */
+  transform: rotate(90deg); /* Rotate the SVG */
+}

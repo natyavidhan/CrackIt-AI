@@ -1,0 +1,142 @@
+.chat-area-container {
+  flex: 1; /* flex-1 */
+  overflow-y: auto; /* overflow-y-auto */
+  background-color: #111827; /* bg-gray-900 */
+}
+
+.chat-area-welcome,
+.chat-area-content {
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem; /* p-6 */
+}
+
+.chat-area-welcome {
+    height: 100%; /* Make welcome message container take full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-message {
+  text-align: center;
+  color: #9ca3af; /* text-gray-400 */
+}
+
+.welcome-message h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 500; /* font-medium */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.chat-header {
+  /* position: sticky; Removed sticky as it complicates things without more structure */
+  /* top: 0; */
+  margin-bottom: 1rem; /* mb-4 */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  background-color: #111827; /* bg-gray-900 */
+  /* z-index: 10; */
+}
+
+.chat-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 500; /* font-medium */
+  text-align: center;
+}
+
+.empty-chat-message {
+  text-align: center;
+  color: #9ca3af; /* text-gray-400 */
+  margin-top: 2.5rem; /* mt-10 */
+}
+
+.messages-list > div { /* Add margin between message blocks */
+    margin-bottom: 1rem; /* mb-4 equivalent */
+}
+.messages-list > div:last-child { /* Remove margin from last child */
+    margin-bottom: 0;
+}
+
+
+.message-row {
+  display: flex;
+}
+
+.message-row.user {
+  justify-content: flex-end; /* justify-end */
+}
+
+.message-row.assistant {
+  justify-content: flex-start; /* justify-start */
+}
+
+.message-bubble {
+  max-width: 75%; /* max-w-md roughly */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.message-bubble.user {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: white; /* text-white */
+}
+
+.message-bubble.assistant {
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #e5e7eb; /* text-gray-200 */
+}
+
+.message-timestamp {
+  font-size: 0.75rem; /* text-xs */
+  opacity: 0.7; /* opacity-70 */
+  margin-top: 0.25rem; /* mt-1 */
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: flex-start; /* justify-start */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.loading-bubble {
+  max-width: 75%;
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #e5e7eb; /* text-gray-200 */
+}
+
+.loading-dots {
+  display: flex;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+.loading-dot {
+  width: 0.5rem; /* w-2 */
+  height: 0.5rem; /* h-2 */
+  border-radius: 9999px; /* rounded-full */
+  background-color: #9ca3af; /* bg-gray-400 */
+  animation: bounce 1s infinite;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.1s; /* delay-100 */
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.2s; /* delay-200 */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
