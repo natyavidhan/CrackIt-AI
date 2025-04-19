@@ -60,7 +60,7 @@ const ChatArea = ({ currentChat, loading }) => {
                             <div
                                 className={`message-bubble ${message.role} ${message.isError ? 'error' : ''}`} 
                             >
-                                <Latex>{message.content || ''}</Latex> 
+                                <Latex>{(message.content || '').replaceAll('\n', '<br />')}</Latex> 
                                 <div className="message-timestamp"> 
                                     {new Date(message.timestamp).toLocaleTimeString()}
                                 </div>
