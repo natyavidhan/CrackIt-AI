@@ -111,20 +111,14 @@ function App() {
     );
   };
 
-  const sendMessage = async (message, exam, subject) => {
+  const sendMessage = async (message, examId, subjectId) => { // Parameters are now IDs
     let chatId = currentChatId;
 
     // If no current chat, create a new one using the selected exam/subject
-    // This part needs adjustment if we want the *first* message to define the chat
-    // For now, let's assume a chat must exist or be created via the sidebar button first.
-    // OR: We could prompt here too if no chat exists. Let's stick to the sidebar prompt for now.
     if (!chatId) {
-       // Option 1: Don't create a chat here, force user to use sidebar button first.
        console.warn("No active chat selected. Please select or create a chat.");
-       setLoading(false); // Ensure loading state is reset if we abort
+       setLoading(false);
        return;
-       // Option 2: Create a default chat (less ideal now)
-       // chatId = createNewChat(`${exam} - ${subject}`); // This would use the modified createNewChat
     }
 
     // Add user message
@@ -138,18 +132,20 @@ function App() {
       )
     );
 
-    // Simulate AI response (replace with real API call)
     setLoading(true);
 
-    // Find the current chat details to potentially pass to API
+    // Find the current chat details
     const currentChatDetails = chats.find(chat => chat.id === chatId);
-    const currentExam = currentChatDetails ? currentChatDetails.exam : exam; // Use chat's exam/subject if available
-    const currentSubject = currentChatDetails ? currentChatDetails.subject : subject;
+    // Use the IDs passed from InputArea for the simulated response
+    const currentExamId = examId; // Directly use the passed ID
+    const currentSubjectId = subjectId; // Directly use the passed ID
 
+    // Simulate AI response (replace with real API call using currentExamId, currentSubjectId)
     setTimeout(() => {
       const aiResponse = {
         role: 'assistant',
-        content: `This is a simulated response for your question about ${currentExam} - ${currentSubject}: "${message}"`,
+        // Using IDs in the simulated response string. Adjust if needed.
+        content: `Simulated response for Exam ID: ${currentExamId} / Subject ID: ${currentSubjectId}: "${message}"`,
         timestamp: new Date().toISOString()
       };
 
