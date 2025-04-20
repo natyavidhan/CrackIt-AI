@@ -31,8 +31,9 @@ const ChatArea = ({ currentChat, loading }) => {
         return (
             <div className="chat-area-container chat-area-welcome"> 
                 <div className="welcome-message"> 
-                <h3>Welcome to Chat App</h3> 
-                <p>Select a chat from the sidebar or start a new conversation</p>
+                    <img src={"/logo.png"} alt="CrackIt AI Logo" className="welcome-logo" /> 
+                    <h3>Welcome to CrackIt AI</h3> 
+                    <p>Select a chat from the sidebar or start a new conversation</p>
                 </div>
             </div>
         );
